@@ -2,6 +2,7 @@ package me.huqiao.learn.mybatis;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import me.huqiao.learn.mybatis.entity.User;
 
@@ -26,9 +27,14 @@ public class MyBatisTest {
 	}
 	
 	@Test
-	public void findByUserIdTest(){
+	public void findUserByIdTest(){
 		User user = sqlSession.selectOne("me.huqiao.learn.mybatis.entity.User.findUserById", 1);
-		System.out.println(user);
+		System.out.println(user); 
+	}
+	@Test
+	public void findUsersByNameTest(){
+		List<User> users = sqlSession.selectList("me.huqiao.learn.mybatis.entity.User.findUsersByName", "%уе%");
+		System.out.println(users);  
 	}
 	
 	@After
