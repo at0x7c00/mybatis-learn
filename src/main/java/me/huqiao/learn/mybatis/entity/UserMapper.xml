@@ -11,6 +11,21 @@
   	select * from sys_user where username like #{username}
   </select>
   
+  <delete id="deleteById" parameterType="int" >
+  	delete from sys_user where id=#{id}
+  </delete>
+  
+  <update id="updateUser" parameterType="me.huqiao.learn.mybatis.entity.User">
+  	update sys_user set username=#{username},email=#{email} where id=#{id}
+  </update>
+  
+  <insert id="addUser"  parameterType="me.huqiao.learn.mybatis.entity.User">
+  	<selectKey order="AFTER" keyProperty="id" resultType="int">
+  		select LAST_INSERT_ID()
+  	</selectKey>
+  	insert into sys_user(username,email) value(#{username},#{email})
+  </insert>
+  
   
   
 </mapper>

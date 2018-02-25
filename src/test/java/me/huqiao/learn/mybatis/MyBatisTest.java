@@ -31,10 +31,39 @@ public class MyBatisTest {
 		User user = sqlSession.selectOne("me.huqiao.learn.mybatis.entity.User.findUserById", 1);
 		System.out.println(user); 
 	}
+	
 	@Test
 	public void findUsersByNameTest(){
 		List<User> users = sqlSession.selectList("me.huqiao.learn.mybatis.entity.User.findUsersByName", "%张%");
 		System.out.println(users);  
+	}
+	
+	@Test
+	public void addUsersTest(){
+		for(int i = 0;i<100;i++){
+			User user = new User();
+			user.setUsername("张三"+i);
+			user.setEmail("zhangsan" + i + "@qq.com");
+			int x = sqlSession.insert("me.huqiao.learn.mybatis.entity.User.addUser", user);
+			System.out.println(x + "," + user.getId());
+		}
+		sqlSession.commit();
+	}
+	
+	@Test
+	public void updateUserTest(){
+		User user = new User();
+		user.setId(1);
+		user.setUsername("张三1111");
+		user.setEmail("zhangsan1111@qq.com");
+		sqlSession.update("me.huqiao.learn.mybatis.entity.User.updateUser", user);
+		sqlSession.commit();
+	}
+	
+	@Test
+	public void deleteUserTest(){
+		sqlSession.delete("me.huqiao.learn.mybatis.entity.User.deleteById", 2);
+		sqlSession.commit();
 	}
 	
 	@After
