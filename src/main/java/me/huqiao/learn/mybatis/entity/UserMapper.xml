@@ -2,6 +2,9 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- 
+  Notice:Do not use this config file any. Because use package to determine the mapper  
+  -->
 <mapper namespace="me.huqiao.learn.mybatis.dao.IUserDao">
   <select id="findById" parameterType="int" resultType="user">
     select * from sys_user where id = #{id}
