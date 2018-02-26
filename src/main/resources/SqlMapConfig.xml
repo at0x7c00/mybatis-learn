@@ -25,6 +25,9 @@
 	    </environment>
 	  </environments>
 	  <mappers>
+	  <!-- 
 	    <mapper resource="me/huqiao/learn/mybatis/entity/UserMapper.xml"/>
+	   -->
+	    <package name="me.huqiao.learn.mybatis.dao"/>
 	  </mappers>
 </configuration>
