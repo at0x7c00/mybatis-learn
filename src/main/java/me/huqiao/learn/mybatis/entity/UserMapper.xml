@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="me.huqiao.learn.mybatis.entity.User">
-  <select id="findUserById" parameterType="int" resultType="me.huqiao.learn.mybatis.entity.User">
+<mapper namespace="me.huqiao.learn.mybatis.dao.IUserDao">
+  <select id="findById" parameterType="int" resultType="me.huqiao.learn.mybatis.entity.User">
     select * from sys_user where id = #{id}
   </select>
   
-  <select id="findUsersByName" parameterType="java.lang.String" resultType="me.huqiao.learn.mybatis.entity.User">
+  <select id="findByName" parameterType="java.lang.String" resultType="me.huqiao.learn.mybatis.entity.User">
   	select * from sys_user where username like #{username}
   </select>
   
@@ -15,11 +15,11 @@
   	delete from sys_user where id=#{id}
   </delete>
   
-  <update id="updateUser" parameterType="me.huqiao.learn.mybatis.entity.User">
+  <update id="update" parameterType="me.huqiao.learn.mybatis.entity.User">
   	update sys_user set username=#{username},email=#{email} where id=#{id}
   </update>
   
-  <insert id="addUser"  parameterType="me.huqiao.learn.mybatis.entity.User">
+  <insert id="add"  parameterType="me.huqiao.learn.mybatis.entity.User">
   	<selectKey order="AFTER" keyProperty="id" resultType="int">
   		select LAST_INSERT_ID()
   	</selectKey>
