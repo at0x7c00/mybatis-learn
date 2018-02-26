@@ -4,20 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-	<properties resource="jdbc.properties"></properties>
+	  <properties resource="jdbc.properties"></properties>
+	  
+	  <typeAliases>
+	  <!-- 
+	  	<typeAlias type="me.huqiao.learn.mybatis.entity.User" alias="user"/>
+	   -->
+	  	<package name="me.huqiao.learn.mybatis"/>
+	  </typeAliases>
 
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="${jdbc.driver}"/>
-        <property name="url" value="${jdbc.url}"/>
-        <property name="username" value="${jdbc.username}"/>
-        <property name="password" value="${jdbc.password}"/>
-      </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-    <mapper resource="me/huqiao/learn/mybatis/entity/UserMapper.xml"/>
-  </mappers>
+	  <environments default="development">
+	    <environment id="development">
+	      <transactionManager type="JDBC"/>
+	      <dataSource type="POOLED">
+	        <property name="driver" value="${jdbc.driver}"/>
+	        <property name="url" value="${jdbc.url}"/>
+	        <property name="username" value="${jdbc.username}"/>
+	        <property name="password" value="${jdbc.password}"/>
+	      </dataSource>
+	    </environment>
+	  </environments>
+	  <mappers>
+	    <mapper resource="me/huqiao/learn/mybatis/entity/UserMapper.xml"/>
+	  </mappers>
 </configuration>

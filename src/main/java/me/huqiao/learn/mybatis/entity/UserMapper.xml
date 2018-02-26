@@ -3,11 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.huqiao.learn.mybatis.dao.IUserDao">
-  <select id="findById" parameterType="int" resultType="me.huqiao.learn.mybatis.entity.User">
+  <select id="findById" parameterType="int" resultType="user">
     select * from sys_user where id = #{id}
   </select>
   
-  <select id="findByName" parameterType="java.lang.String" resultType="me.huqiao.learn.mybatis.entity.User">
+  <select id="findByName" parameterType="string" resultType="user">
   	select * from sys_user where username like #{username}
   </select>
   
@@ -15,17 +15,14 @@
   	delete from sys_user where id=#{id}
   </delete>
   
-  <update id="update" parameterType="me.huqiao.learn.mybatis.entity.User">
+  <update id="update" parameterType="user">
   	update sys_user set username=#{username},email=#{email} where id=#{id}
   </update>
   
-  <insert id="add"  parameterType="me.huqiao.learn.mybatis.entity.User">
+  <insert id="add"  parameterType="user">
   	<selectKey order="AFTER" keyProperty="id" resultType="int">
   		select LAST_INSERT_ID()
   	</selectKey>
   	insert into sys_user(username,email) value(#{username},#{email})
   </insert>
-  
-  
-  
 </mapper>

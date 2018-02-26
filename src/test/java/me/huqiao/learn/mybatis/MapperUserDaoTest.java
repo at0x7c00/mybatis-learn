@@ -22,7 +22,6 @@ public class MapperUserDaoTest {
 		InputStream is = Resources.getResourceAsStream("SqlMapConfig.xml");
 		sessionFactory = new SqlSessionFactoryBuilder().build(is);
 		is.close();
-		
 	}
 	
 	@Test
