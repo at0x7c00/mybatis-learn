@@ -1,6 +1,7 @@
 package me.huqiao.learn.mybatis;
 
 import java.io.InputStream;
+import java.util.List;
 
 import me.huqiao.learn.mybatis.dao.IUserDao;
 import me.huqiao.learn.mybatis.entity.User;
@@ -30,6 +31,17 @@ public class MapperUserDaoTest {
 		IUserDao userDao = sqlSession.getMapper(IUserDao.class);
 		User user = userDao.findById(1);
 		System.out.println(user);
+		sqlSession.close();
+	}
+	
+	@Test
+	public void testFind(){
+		SqlSession sqlSession = sessionFactory.openSession();
+		IUserDao userDao = sqlSession.getMapper(IUserDao.class);
+		User query = new User();
+		query.setUsername("Èý·á");
+		List<User> users = userDao.find(query);
+		System.out.println(users);
 		sqlSession.close();
 	}
 	

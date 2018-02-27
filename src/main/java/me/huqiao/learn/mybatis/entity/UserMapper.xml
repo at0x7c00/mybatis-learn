@@ -6,6 +6,7 @@
   Notice:Do not use this config file any. Because use package to determine the mapper  
   -->
 <mapper namespace="me.huqiao.learn.mybatis.dao.IUserDao">
+
   <select id="findById" parameterType="int" resultType="user">
     select * from sys_user where id = #{id}
   </select>
