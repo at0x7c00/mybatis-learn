@@ -7,10 +7,10 @@
   <resultMap type="Order" id="orderMap">
   	<id column="id" property="id"/>
   	<result column="create_time" property="createTime"/>
-  	<association property="user" javaType="User">
-  		<id column="u_id" property="id"/>
+  	<association property="user" javaType="User" fetchType="lazy" column="u_id" select="me.huqiao.learn.mybatis.dao.IUserDao.findById">
+  		<!-- <id column="u_id" property="id"/>
   		<result column="username" property="username"/>
-  		<result column="email" property="email"/>
+  		<result column="email" property="email"/> -->
   	</association>
   	<collection property="details" ofType="OrderDetail">
   		<id column="od_id" property="id"/>
@@ -25,8 +25,7 @@
   <select id="findById" parameterType="int" resultMap="orderMap" >
 	SELECT
 		o.*, u.id u_id,
-		u.username,
-		u.email,
+
 		od.id od_id,
 		i.id item_id,
 		i.`name` item_name,
