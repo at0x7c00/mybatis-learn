@@ -12,18 +12,34 @@
   		<result column="username" property="username"/>
   		<result column="email" property="email"/>
   	</association>
+  	<collection property="details" ofType="OrderDetail">
+  		<id column="od_id" property="id"/>
+  		<association property="item" javaType="Item">
+  			<id column="item_id" property="id"/>
+  			<result column="item_name" property="name"/>
+  			<result column="item_price" property="price"/>
+  		</association>
+  	</collection>
   </resultMap>
   
   <select id="findById" parameterType="int" resultMap="orderMap" >
 	SELECT
 		o.*, u.id u_id,
 		u.username,
-		u.email
+		u.email,
+		od.id od_id,
+		i.id item_id,
+		i.`name` item_name,
+		i.price item_price
 	FROM
 		sys_order o,
-		sys_user u
+		sys_user u,
+		sys_order_detail od,
+		sys_item i
 	WHERE
 		o.user_id = u.id
+	AND od.order_id = o.id
+	AND od.item_id = i.id
 	AND o.id = #{id}
   </select>
   

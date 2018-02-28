@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import me.huqiao.learn.mybatis.dao.IOrderDao;
 import me.huqiao.learn.mybatis.entity.Order;
+import me.huqiao.learn.mybatis.entity.OrderDetail;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -28,8 +29,12 @@ public class OrderDaoTest {
 	public void testFindById(){
 		SqlSession sqlSession = sessionFactory.openSession();
 		IOrderDao orderDao = sqlSession.getMapper(IOrderDao.class);
-		Order order = orderDao.findById(1);
-		System.out.println(order);
+		Order order = orderDao.findById(3);
+		System.out.println(order.getId() + "," + order.getCreateTime());
+		System.out.println(order.getUser());
+		for(OrderDetail detail : order.getDetails()){
+			System.out.println(detail);
+		}
 		sqlSession.close();
 	}
 	

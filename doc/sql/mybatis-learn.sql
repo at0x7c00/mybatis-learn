@@ -54,7 +54,7 @@ CONSTRAINT `item_id` FOREIGN KEY (`item_id`) REFERENCES `sys_item` (`id`) ON DEL
 )ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 INSERT INTO `sys_order_detail` (`id`, `order_id`, `item_id`) VALUES ('1', '1', '1');
 INSERT INTO `sys_order_detail` (`id`, `order_id`, `item_id`) VALUES ('2', '1', '2');
-INSERT INTO `sys_order_detail` (`id`, `order_id`, `item_id`) VALUES ('3', '2', '2');
+INSERT INTO `sys_order_detail` (`id`, `order_id`, `item_id`) VALUES ('3', '2', '3');
 INSERT INTO `sys_order_detail` (`id`, `order_id`, `item_id`) VALUES ('4', '3', '4');
 INSERT INTO `sys_order_detail` (`id`, `order_id`, `item_id`) VALUES ('5', '3', '3');
 INSERT INTO `sys_order_detail` (`id`, `order_id`, `item_id`) VALUES ('6', '3', '4');
